@@ -31,7 +31,7 @@ Ejecuta los siguientes comandos en tu terminal para clonar el repositorio y conf
 
 ```bash
 # 1. Clona el repositorio
-git clone [https://github.com/tu-usuario/audio-noise-filter.git](https://github.com/tu-usuario/audio-noise-filter.git)
+git clone https://github.com/YandreyC/audio-noise-flitrer.git
 cd audio-noise-filter
 
 # 2. Crea y activa el entorno virtual
