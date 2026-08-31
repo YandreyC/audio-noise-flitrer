@@ -1,0 +1,16 @@
+# Entornos virtuales
+venv/
+env/
+ENV/
+
+# Caché de Python
+__pycache__/
+*.pyc
+
+# Archivos de sistemas operativos
+.DS_Store
+Thumbs.db
+
+# Resultados locales
+outputs/*.wav
+plots/*.png
