@@ -32,7 +32,7 @@ Ejecuta los siguientes comandos en tu terminal para clonar el repositorio y conf
 ```bash
 # 1. Clona el repositorio
 git clone https://github.com/YandreyC/audio-noise-flitrer.git
-cd audio-noise-filter
+cd audio-noise-flitrer
 
 # 2. Crea y activa el entorno virtual
 python -m venv venv
@@ -40,3 +40,30 @@ source venv/bin/activate  # En Windows usa: venv\Scripts\activate
 
 # 3. Instala las dependencias necesarias
 pip install -r requirements.txt
+```
+
+## Uso
+
+Coloca un archivo WAV en `data/input_audio.wav` y ejecuta:
+
+```powershell
+python src/filter.py
+```
+
+Por defecto se elimina el rango de 3000 a 4000 Hz. Puedes cambiarlo y elegir otros archivos:
+
+```powershell
+python src/filter.py --input data/input_audio.wav --output outputs/clean_audio.wav --min-hz 3000 --max-hz 4000 --plot plots/comparison.png
+```
+
+El programa conserva mono o estéreo, escribe el audio filtrado en `outputs/clean_audio.wav` y genera una comparación temporal y espectral en `plots/comparison.png`.
+
+### Reducción automática de ruido
+
+Si los primeros segundos del audio contienen principalmente ruido de fondo, puedes estimar su perfil automáticamente:
+
+```powershell
+python src/filter.py --auto-noise --noise-duration 1.5 --strength 1.5
+```
+
+`--noise-duration` indica cuántos segundos iniciales se usan para medir el ruido. `--strength` aumenta o reduce la agresividad: valores mayores eliminan más ruido, pero pueden afectar sonidos débiles. Este modo funciona mejor con ruido constante, como ventiladores o zumbidos.
